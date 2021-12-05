@@ -13,7 +13,7 @@ const mongo_uri=process.env.MONGO_DB_URL
 
 //middleware
 app.use(cors({
-    origin : ["http://localhost:3000"],
+    origin : ["http://localhost:3001"],
     credentials : true
 }))
 app.use(cookieParser())
