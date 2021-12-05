@@ -19,17 +19,20 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.json())
 // database connection
-mongoose.connect(mongo_uri,{ useNewUrlParser: true, useUnifiedTopology: true },err=>{
-    if(err) throw err
+mongoose.connect(mongo_uri,{ useNewUrlParser: true, useUnifiedTopology: true },
+  // err=>{
+  //   if(err) throw err
     // console.log("Connected ")
 
-})
+// }
+)
 
 
 //router
 app.get('/',(req,res)=>{
     res.json({msg : "Hello"})
 })
+app.use('/api', require("./routes/menuRouter"))
 
 // listening to port
 const db=mongoose.connection
