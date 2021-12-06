@@ -39,10 +39,10 @@ const db=mongoose.connection
 // })
 
 app.use(session({
-  secret : process.env.SECRET_KEY,
+  secret : process.env.SESSION_KEY,
   resave:false,
   store: MongoStore.create({mongoUrl: process.env.MONGO_DB_URL}),
-  saveUninitialized:false,
+  saveUninitialized:true,
   cookie: {maxAge : 1000*60*60*24}
 }))
 
@@ -53,6 +53,7 @@ app.get('/',(req,res)=>{
     res.json({msg : "Hello"})
 })
 app.use('/api', require("./routes/menuRouter"))
+app.use('/api', require("./routes/cartRouter"))
 
 // listening to port
 db.on("error", console.error.bind(console, "connection error: "));
