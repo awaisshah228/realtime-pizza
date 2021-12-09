@@ -24,6 +24,10 @@ const cartCtrl={
       }
 
        return res.json({cart: req.session.cart })
+  },
+  getCart:(req,res)=>{
+      return res.json({cart: req.session.cart})
   }
+
 }
 module.exports= cartCtrl
